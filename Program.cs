@@ -10,7 +10,7 @@ namespace SlackNet.BotExample
         {
             try{
                 Console.WriteLine(args[0]);
-                await Run(args[0]).ConfigureAwait(false);
+                await Run(args[0],args[1]).ConfigureAwait(false);
             }
             catch(Exception e){
                 Console.WriteLine(e.Message);
@@ -19,13 +19,13 @@ namespace SlackNet.BotExample
             }
         }
 
-        private static async Task Run(string token)
+        private static async Task Run(string token, string logfile)
         {
             using(var bot = new SlackBot(token)){
 
                 bot.AddHandler(new PingHandler());
                 //bot.AddHandler(new MessageHandler());
-                bot.AddHandler(new MessageHandler("/Users/abrenden/tmp.txt"));
+                bot.AddHandler(new MessageHandler(logfile));
 
                 await bot.Connect().ConfigureAwait(false);
                 Console.WriteLine("Connected");
