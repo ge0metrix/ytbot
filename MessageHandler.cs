@@ -23,7 +23,11 @@ namespace SlackNet.BotExample
         {   
             if(message.Conversation.IsChannel){
                 string format = "[{0:u}] [{3}] <{1}> {2}\r\n";
-                string logline = String.Format(format, message.Timestamp, message.User.Name, message.Text, message.Conversation.Name);
+                string username = message.User.Profile.DisplayName;
+                if (message.User.Profile.DisplayName == ""){
+                    username = message.User.Name;
+                }
+                string logline = String.Format(format, message.Timestamp, username, message.Text, message.Conversation.Name);
                 Console.WriteLine(logline);
                 if(_logtofile){
                     await System.IO.File.AppendAllTextAsync(_logfile,logline);

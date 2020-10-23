@@ -10,7 +10,7 @@ namespace SlackNet.BotExample
 
         public async Task HandleMessage(IMessage message)
         {
-            if (message.Text.Contains("ping"))
+            if (message.Text.Contains("ping", StringComparison.CurrentCultureIgnoreCase))
             {
                 Console.WriteLine($"Received ping from @{message.User.Name}");
 

@@ -10,6 +10,7 @@ namespace SlackNet.BotExample
         {
             try{
                 Console.WriteLine(args[0]);
+
                 await Run(args[0],args[1]).ConfigureAwait(false);
             }
             catch(Exception e){
@@ -26,10 +27,9 @@ namespace SlackNet.BotExample
                 bot.AddHandler(new PingHandler());
                 //bot.AddHandler(new MessageHandler());
                 bot.AddHandler(new MessageHandler(logfile));
-
+                
                 await bot.Connect().ConfigureAwait(false);
                 Console.WriteLine("Connected");
-
                 await WaitForKeyPress().ConfigureAwait(false);
             }
         }
