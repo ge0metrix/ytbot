@@ -1,9 +1,6 @@
 using System;
 using System.Threading.Tasks;
 using SlackNet.Bot;
-using System.Text.Json;
-using System.Text.Json.Serialization;
-
 
 namespace SlackNet.BotExample
 {
@@ -28,7 +25,7 @@ namespace SlackNet.BotExample
                     username = message.User.Name;
                 }
                 string logline = String.Format(format, message.Timestamp, username, message.Text, message.Conversation.Name);
-                Console.WriteLine(logline);
+                Console.Write(logline);
                 if(_logtofile){
                     await System.IO.File.AppendAllTextAsync(_logfile,logline);
                 }

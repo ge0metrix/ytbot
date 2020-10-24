@@ -25,3 +25,5 @@ jobs:
       run: dotnet publish -r osx-x64 -p:PublishSingleFile=true --self-contained false
     - name: Publishwin10
       run: dotnet publish -r win-x64 -p:PublishSingleFile=true --self-contained false
+    - name: Publishlinux
+      run: dotnet publish -r linux-x64 -p:PublishSingleFile=true --self-contained false
