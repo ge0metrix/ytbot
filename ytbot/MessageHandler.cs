@@ -24,8 +24,14 @@ namespace SlackNet.BotExample
                 if (message.User.Profile.DisplayName == ""){
                     username = message.User.Name;
                 }
-                string logline = String.Format(format, message.Timestamp, username, message.Text, message.Conversation.Name);
-                Console.Write(logline);
+                string logline ="";
+                string[] loglines = message.Text.Split(new string[] { "\r\n", "\r", "\n" },StringSplitOptions.None);
+
+                foreach(string line in loglines){
+                    Console.WriteLine(String.Format(format, message.Timestamp, username, line, message.Conversation.Name));
+                    logline = logline + String.Format(format, message.Timestamp, username, line, message.Conversation.Name);
+                }
+                //Console.Write(logline);
                 if(_logtofile){
                     await System.IO.File.AppendAllTextAsync(_logfile,logline);
                 }
