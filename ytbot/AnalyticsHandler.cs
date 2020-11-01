@@ -7,11 +7,15 @@ namespace SlackNet.BotExample
 {
     internal class AnalyticsHandler : IMessageHandler
     {
-        private static readonly AzureKeyCredential credentials = new AzureKeyCredential("<TOKEN>");
-        private static readonly Uri endpoint = new Uri("<ENDPOINT>>");
+        private  AzureKeyCredential _credentials;
+        private Uri _endpoint;
+        public AnalyticsHandler(string token, string endpoint){
+            _credentials = new AzureKeyCredential(token);
+            _endpoint = new Uri(endpoint);
+        }
         public async Task HandleMessage(IMessage message)
         {   
-            var client = new TextAnalyticsClient(endpoint, credentials);
+            var client = new TextAnalyticsClient(_endpoint, _credentials);
             await Analyze(client, message.Text);
         }
         static async Task Analyze(TextAnalyticsClient client, string text)
