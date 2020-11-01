@@ -15,6 +15,8 @@ namespace SlackNet.BotExample
             
             Regex pingrex = new Regex(@"\bping\b", RegexOptions.IgnoreCase);
             Regex pongrex = new Regex(@"\bpong\b", RegexOptions.IgnoreCase);
+            Regex patsrex = new Regex(@"\bfuck the pats\b", RegexOptions.IgnoreCase);
+            Regex jetssrex = new Regex(@"\bfuck the jets\b", RegexOptions.IgnoreCase);
             if (pingrex.Match(message.Text).Success)
             {
                 Console.WriteLine($"Received ping from @{message.User.Name}");
@@ -25,6 +27,17 @@ namespace SlackNet.BotExample
                 Console.WriteLine($"Received pong from @{message.User.Name}");
                 await message.ReplyWith(new BotMessage { Text = $"PING - pong count: {++_pongcount}"}).ConfigureAwait(false);
             }
+/*            if (patsrex.Match(message.Text).Success)
+            {
+                Console.WriteLine($"Received fuck the pats from @{message.User.Name}");
+                await message.ReplyWith(new BotMessage { Text = $":pats: :pats: :pats: :pats:"}).ConfigureAwait(false);
+            }
+            if (jetssrex.Match(message.Text).Success)
+            {
+                Console.WriteLine($"Received pong from @{message.User.Name}");
+                await message.ReplyWith(new BotMessage { Text = $":billdo:"}).ConfigureAwait(false);
+            }*/
+
          }
     }
 }

@@ -27,6 +27,7 @@ namespace SlackNet.BotExample
                 bot.AddHandler(new PingHandler());
                 //bot.AddHandler(new MessageHandler());
                 bot.AddHandler(new MessageHandler(logfile));
+                bot.AddHandler(new AnalyticsHandler());
                 
                 await bot.Connect().ConfigureAwait(false);
                 Console.WriteLine("Connected");

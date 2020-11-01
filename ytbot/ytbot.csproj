@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Azure.AI.TextAnalytics" Version="5.0.0" />
     <PackageReference Include="SlackNet.Bot" Version="0.7.9" />
   </ItemGroup>
 
